@@ -626,11 +626,14 @@ class PromptServer():
         site = web.TCPSite(runner, address, port)
         await site.start()
 
+        if address == '':
+            address = '0.0.0.0'
+        showAddresss = address if address != '0.0.0.0' else '127.0.0.1'
         if verbose:
             logging.info("Starting server\n")
-            logging.info("To see the GUI go to: http://{}:{}".format(address, port))
+            logging.info("To see the GUI go to: http://{}:{}".format(showAddresss, port))
         if call_on_start is not None:
-            call_on_start(address, port)
+            call_on_start(showAddresss, port)
 
     def add_on_prompt_handler(self, handler):
         self.on_prompt_handlers.append(handler)
