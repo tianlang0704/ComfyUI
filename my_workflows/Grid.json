@@ -1,0 +1,4230 @@
+{
+    "last_node_id": 164,
+    "last_link_id": 313,
+    "nodes": [
+        {
+            "id": 35,
+            "type": "Reroute",
+            "pos": [
+                1723.8866912841797,
+                200.69334564208978
+            ],
+            "size": [
+                75,
+                26
+            ],
+            "flags": {},
+            "order": 14,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "",
+                    "type": "*",
+                    "link": 80
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "LATENT",
+                    "links": [
+                        31,
+                        110,
+                        118,
+                        126,
+                        134,
+                        227,
+                        236,
+                        245,
+                        254,
+                        263,
+                        272,
+                        281,
+                        290,
+                        299,
+                        308
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "showOutputText": false,
+                "horizontal": false
+            }
+        },
+        {
+            "id": 36,
+            "type": "Reroute",
+            "pos": [
+                1720,
+                265
+            ],
+            "size": [
+                75,
+                26
+            ],
+            "flags": {},
+            "order": 11,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "",
+                    "type": "*",
+                    "link": 33
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "VAE",
+                    "links": [
+                        34,
+                        113,
+                        121,
+                        129,
+                        137,
+                        231,
+                        240,
+                        249,
+                        258,
+                        267,
+                        276,
+                        285,
+                        294,
+                        303,
+                        312
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "showOutputText": false,
+                "horizontal": false
+            }
+        },
+        {
+            "id": 18,
+            "type": "LoadImage",
+            "pos": [
+                18,
+                969
+            ],
+            "size": {
+                "0": 370.468017578125,
+                "1": 452.2564392089844
+            },
+            "flags": {},
+            "order": 0,
+            "mode": 0,
+            "outputs": [
+                {
+                    "name": "IMAGE",
+                    "type": "IMAGE",
+                    "links": [
+                        15
+                    ],
+                    "slot_index": 0
+                },
+                {
+                    "name": "MASK",
+                    "type": "MASK",
+                    "links": null,
+                    "slot_index": 1
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "Load Image"
+            },
+            "widgets_values": [
+                "example.png",
+                "image"
+            ]
+        },
+        {
+            "id": 20,
+            "type": "VAEEncode",
+            "pos": [
+                562,
+                886
+            ],
+            "size": {
+                "0": 210,
+                "1": 46
+            },
+            "flags": {},
+            "order": 10,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "pixels",
+                    "type": "IMAGE",
+                    "link": 15
+                },
+                {
+                    "name": "vae",
+                    "type": "VAE",
+                    "link": 16
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "LATENT",
+                    "type": "LATENT",
+                    "links": [
+                        80
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "VAE Encode"
+            }
+        },
+        {
+            "id": 7,
+            "type": "CLIPTextEncode",
+            "pos": [
+                418,
+                136
+            ],
+            "size": {
+                "0": 425.27801513671875,
+                "1": 180.6060791015625
+            },
+            "flags": {},
+            "order": 9,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "clip",
+                    "type": "CLIP",
+                    "link": 5
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "CONDITIONING",
+                    "type": "CONDITIONING",
+                    "links": [
+                        28
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "CLIP Text Encode (Prompt)"
+            },
+            "widgets_values": [
+                "embedding:EasyNegative"
+            ]
+        },
+        {
+            "id": 6,
+            "type": "CLIPTextEncode",
+            "pos": [
+                412,
+                -79
+            ],
+            "size": {
+                "0": 422.84503173828125,
+                "1": 164.31304931640625
+            },
+            "flags": {},
+            "order": 8,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "clip",
+                    "type": "CLIP",
+                    "link": 3
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "CONDITIONING",
+                    "type": "CONDITIONING",
+                    "links": [
+                        23
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "CLIP Text Encode (Prompt)"
+            },
+            "widgets_values": [
+                "masterpiece best quality girl"
+            ]
+        },
+        {
+            "id": 48,
+            "type": "SaveImage",
+            "pos": [
+                2476,
+                106
+            ],
+            "size": {
+                "0": 435.8592529296875,
+                "1": 499.91339111328125
+            },
+            "flags": {},
+            "order": 45,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "images",
+                    "type": "IMAGE",
+                    "link": 44
+                }
+            ],
+            "properties": {},
+            "widgets_values": [
+                "ComfyUI"
+            ]
+        },
+        {
+            "id": 4,
+            "type": "CheckpointLoaderSimple",
+            "pos": [
+                53,
+                425
+            ],
+            "size": {
+                "0": 315,
+                "1": 98
+            },
+            "flags": {},
+            "order": 1,
+            "mode": 0,
+            "outputs": [
+                {
+                    "name": "MODEL",
+                    "type": "MODEL",
+                    "links": [
+                        25
+                    ],
+                    "slot_index": 0
+                },
+                {
+                    "name": "CLIP",
+                    "type": "CLIP",
+                    "links": [
+                        3,
+                        5
+                    ],
+                    "slot_index": 1
+                },
+                {
+                    "name": "VAE",
+                    "type": "VAE",
+                    "links": [
+                        16,
+                        33
+                    ],
+                    "slot_index": 2
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "Load Checkpoint (Simple)"
+            },
+            "widgets_values": [
+                "AOM3.safetensors"
+            ]
+        },
+        {
+            "id": 8,
+            "type": "VAEDecode",
+            "pos": [
+                2222,
+                115
+            ],
+            "size": {
+                "0": 210,
+                "1": 46
+            },
+            "flags": {},
+            "order": 30,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "samples",
+                    "type": "LATENT",
+                    "link": 12
+                },
+                {
+                    "name": "vae",
+                    "type": "VAE",
+                    "link": 34
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "IMAGE",
+                    "type": "IMAGE",
+                    "links": [
+                        44
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "VAE Decode"
+            }
+        },
+        {
+            "id": 55,
+            "type": "PrimitiveNode",
+            "pos": [
+                1530,
+                -111
+            ],
+            "size": {
+                "0": 210,
+                "1": 82
+            },
+            "flags": {},
+            "order": 2,
+            "mode": 0,
+            "outputs": [
+                {
+                    "name": "INT",
+                    "type": "INT",
+                    "links": [
+                        52,
+                        111,
+                        119,
+                        127,
+                        135,
+                        228,
+                        237,
+                        246,
+                        255,
+                        264,
+                        273,
+                        282,
+                        291,
+                        300,
+                        309
+                    ],
+                    "slot_index": 0,
+                    "widget": {
+                        "name": "seed",
+                        "config": [
+                            "INT",
+                            {
+                                "default": 0,
+                                "min": 0,
+                                "max": 18446744073709552000
+                            }
+                        ]
+                    }
+                }
+            ],
+            "properties": {},
+            "widgets_values": [
+                735802039527701,
+                false
+            ]
+        },
+        {
+            "id": 33,
+            "type": "Reroute",
+            "pos": [
+                1724,
+                31
+            ],
+            "size": [
+                75,
+                26
+            ],
+            "flags": {},
+            "order": 7,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "",
+                    "type": "*",
+                    "link": 25
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "MODEL",
+                    "links": [
+                        26,
+                        107,
+                        115,
+                        123,
+                        131,
+                        224,
+                        233,
+                        242,
+                        251,
+                        260,
+                        269,
+                        278,
+                        287,
+                        296,
+                        305
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "showOutputText": false,
+                "horizontal": false
+            }
+        },
+        {
+            "id": 32,
+            "type": "Reroute",
+            "pos": [
+                1723,
+                86
+            ],
+            "size": [
+                75,
+                26
+            ],
+            "flags": {},
+            "order": 12,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "",
+                    "type": "*",
+                    "link": 23
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "CONDITIONING",
+                    "links": [
+                        24,
+                        108,
+                        116,
+                        124,
+                        132,
+                        225,
+                        234,
+                        243,
+                        252,
+                        261,
+                        270,
+                        279,
+                        288,
+                        297,
+                        306
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "showOutputText": false,
+                "horizontal": false
+            }
+        },
+        {
+            "id": 34,
+            "type": "Reroute",
+            "pos": [
+                1720.8866912841797,
+                143.6933456420898
+            ],
+            "size": [
+                75,
+                26
+            ],
+            "flags": {},
+            "order": 13,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "",
+                    "type": "*",
+                    "link": 28
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "CONDITIONING",
+                    "links": [
+                        29,
+                        109,
+                        117,
+                        125,
+                        133,
+                        226,
+                        235,
+                        244,
+                        253,
+                        262,
+                        271,
+                        280,
+                        289,
+                        298,
+                        307
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "showOutputText": false,
+                "horizontal": false
+            }
+        },
+        {
+            "id": 3,
+            "type": "KSampler",
+            "pos": [
+                1858,
+                -57
+            ],
+            "size": {
+                "0": 295.8985900878906,
+                "1": 234
+            },
+            "flags": {
+                "pinned": true
+            },
+            "order": 15,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "model",
+                    "type": "MODEL",
+                    "link": 26
+                },
+                {
+                    "name": "positive",
+                    "type": "CONDITIONING",
+                    "link": 24
+                },
+                {
+                    "name": "negative",
+                    "type": "CONDITIONING",
+                    "link": 29
+                },
+                {
+                    "name": "latent_image",
+                    "type": "LATENT",
+                    "link": 31
+                },
+                {
+                    "name": "seed",
+                    "type": "INT",
+                    "link": 52,
+                    "widget": {
+                        "name": "seed",
+                        "config": [
+                            "INT",
+                            {
+                                "default": 0,
+                                "min": 0,
+                                "max": 18446744073709552000
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "steps",
+                    "type": "INT",
+                    "link": 219,
+                    "widget": {
+                        "name": "steps",
+                        "config": [
+                            "INT",
+                            {
+                                "default": 20,
+                                "min": 1,
+                                "max": 10000
+                            }
+                        ]
+                    },
+                    "slot_index": 5
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "LATENT",
+                    "type": "LATENT",
+                    "links": [
+                        12
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "KSampler"
+            },
+            "widgets_values": [
+                735802039527701,
+                false,
+                25,
+                5,
+                "ddim",
+                "ddim_uniform",
+                1
+            ]
+        },
+        {
+            "id": 90,
+            "type": "KSampler",
+            "pos": [
+                1869,
+                547
+            ],
+            "size": {
+                "0": 295.8985900878906,
+                "1": 234
+            },
+            "flags": {
+                "pinned": true
+            },
+            "order": 16,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "model",
+                    "type": "MODEL",
+                    "link": 107
+                },
+                {
+                    "name": "positive",
+                    "type": "CONDITIONING",
+                    "link": 108
+                },
+                {
+                    "name": "negative",
+                    "type": "CONDITIONING",
+                    "link": 109
+                },
+                {
+                    "name": "latent_image",
+                    "type": "LATENT",
+                    "link": 110
+                },
+                {
+                    "name": "seed",
+                    "type": "INT",
+                    "link": 111,
+                    "widget": {
+                        "name": "seed",
+                        "config": [
+                            "INT",
+                            {
+                                "default": 0,
+                                "min": 0,
+                                "max": 18446744073709552000
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "steps",
+                    "type": "INT",
+                    "link": 220,
+                    "widget": {
+                        "name": "steps",
+                        "config": [
+                            "INT",
+                            {
+                                "default": 20,
+                                "min": 1,
+                                "max": 10000
+                            }
+                        ]
+                    }
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "LATENT",
+                    "type": "LATENT",
+                    "links": [
+                        112
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "KSampler"
+            },
+            "widgets_values": [
+                735802039527701,
+                false,
+                25,
+                10,
+                "ddim",
+                "ddim_uniform",
+                1
+            ]
+        },
+        {
+            "id": 92,
+            "type": "SaveImage",
+            "pos": [
+                2487.3307008203137,
+                710.1580895367413
+            ],
+            "size": {
+                "0": 435.8592529296875,
+                "1": 499.91339111328125
+            },
+            "flags": {},
+            "order": 46,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "images",
+                    "type": "IMAGE",
+                    "link": 114
+                }
+            ],
+            "properties": {},
+            "widgets_values": [
+                "ComfyUI"
+            ]
+        },
+        {
+            "id": 93,
+            "type": "KSampler",
+            "pos": [
+                1876,
+                1136
+            ],
+            "size": {
+                "0": 295.8985900878906,
+                "1": 234
+            },
+            "flags": {
+                "pinned": true
+            },
+            "order": 17,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "model",
+                    "type": "MODEL",
+                    "link": 115
+                },
+                {
+                    "name": "positive",
+                    "type": "CONDITIONING",
+                    "link": 116
+                },
+                {
+                    "name": "negative",
+                    "type": "CONDITIONING",
+                    "link": 117
+                },
+                {
+                    "name": "latent_image",
+                    "type": "LATENT",
+                    "link": 118
+                },
+                {
+                    "name": "seed",
+                    "type": "INT",
+                    "link": 119,
+                    "widget": {
+                        "name": "seed",
+                        "config": [
+                            "INT",
+                            {
+                                "default": 0,
+                                "min": 0,
+                                "max": 18446744073709552000
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "steps",
+                    "type": "INT",
+                    "link": 221,
+                    "widget": {
+                        "name": "steps",
+                        "config": [
+                            "INT",
+                            {
+                                "default": 20,
+                                "min": 1,
+                                "max": 10000
+                            }
+                        ]
+                    }
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "LATENT",
+                    "type": "LATENT",
+                    "links": [
+                        120
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "KSampler"
+            },
+            "widgets_values": [
+                735802039527701,
+                false,
+                25,
+                15,
+                "ddim",
+                "ddim_uniform",
+                1
+            ]
+        },
+        {
+            "id": 94,
+            "type": "VAEDecode",
+            "pos": [
+                2239.772740820312,
+                1307.5312400329562
+            ],
+            "size": {
+                "0": 210,
+                "1": 46
+            },
+            "flags": {},
+            "order": 32,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "samples",
+                    "type": "LATENT",
+                    "link": 120
+                },
+                {
+                    "name": "vae",
+                    "type": "VAE",
+                    "link": 121
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "IMAGE",
+                    "type": "IMAGE",
+                    "links": [
+                        122
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "VAE Decode"
+            }
+        },
+        {
+            "id": 95,
+            "type": "SaveImage",
+            "pos": [
+                2493.772740820312,
+                1298.5312400329562
+            ],
+            "size": {
+                "0": 435.8592529296875,
+                "1": 499.91339111328125
+            },
+            "flags": {},
+            "order": 47,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "images",
+                    "type": "IMAGE",
+                    "link": 122
+                }
+            ],
+            "properties": {},
+            "widgets_values": [
+                "ComfyUI"
+            ]
+        },
+        {
+            "id": 96,
+            "type": "KSampler",
+            "pos": [
+                1870,
+                1726
+            ],
+            "size": {
+                "0": 295.8985900878906,
+                "1": 234
+            },
+            "flags": {
+                "pinned": true
+            },
+            "order": 18,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "model",
+                    "type": "MODEL",
+                    "link": 123
+                },
+                {
+                    "name": "positive",
+                    "type": "CONDITIONING",
+                    "link": 124
+                },
+                {
+                    "name": "negative",
+                    "type": "CONDITIONING",
+                    "link": 125
+                },
+                {
+                    "name": "latent_image",
+                    "type": "LATENT",
+                    "link": 126
+                },
+                {
+                    "name": "seed",
+                    "type": "INT",
+                    "link": 127,
+                    "widget": {
+                        "name": "seed",
+                        "config": [
+                            "INT",
+                            {
+                                "default": 0,
+                                "min": 0,
+                                "max": 18446744073709552000
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "steps",
+                    "type": "INT",
+                    "link": 222,
+                    "widget": {
+                        "name": "steps",
+                        "config": [
+                            "INT",
+                            {
+                                "default": 20,
+                                "min": 1,
+                                "max": 10000
+                            }
+                        ]
+                    }
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "LATENT",
+                    "type": "LATENT",
+                    "links": [
+                        128
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "KSampler"
+            },
+            "widgets_values": [
+                735802039527701,
+                false,
+                25,
+                20,
+                "ddim",
+                "ddim_uniform",
+                1
+            ]
+        },
+        {
+            "id": 97,
+            "type": "VAEDecode",
+            "pos": [
+                2234.319651571496,
+                1897.511030035728
+            ],
+            "size": {
+                "0": 210,
+                "1": 46
+            },
+            "flags": {},
+            "order": 33,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "samples",
+                    "type": "LATENT",
+                    "link": 128
+                },
+                {
+                    "name": "vae",
+                    "type": "VAE",
+                    "link": 129
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "IMAGE",
+                    "type": "IMAGE",
+                    "links": [
+                        130
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "VAE Decode"
+            }
+        },
+        {
+            "id": 99,
+            "type": "KSampler",
+            "pos": [
+                1867,
+                2303
+            ],
+            "size": {
+                "0": 295.8985900878906,
+                "1": 234
+            },
+            "flags": {
+                "pinned": true
+            },
+            "order": 19,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "model",
+                    "type": "MODEL",
+                    "link": 131
+                },
+                {
+                    "name": "positive",
+                    "type": "CONDITIONING",
+                    "link": 132
+                },
+                {
+                    "name": "negative",
+                    "type": "CONDITIONING",
+                    "link": 133
+                },
+                {
+                    "name": "latent_image",
+                    "type": "LATENT",
+                    "link": 134
+                },
+                {
+                    "name": "seed",
+                    "type": "INT",
+                    "link": 135,
+                    "widget": {
+                        "name": "seed",
+                        "config": [
+                            "INT",
+                            {
+                                "default": 0,
+                                "min": 0,
+                                "max": 18446744073709552000
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "steps",
+                    "type": "INT",
+                    "link": 223,
+                    "widget": {
+                        "name": "steps",
+                        "config": [
+                            "INT",
+                            {
+                                "default": 20,
+                                "min": 1,
+                                "max": 10000
+                            }
+                        ]
+                    }
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "LATENT",
+                    "type": "LATENT",
+                    "links": [
+                        136
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "KSampler"
+            },
+            "widgets_values": [
+                735802039527701,
+                false,
+                25,
+                25,
+                "ddim",
+                "ddim_uniform",
+                1
+            ]
+        },
+        {
+            "id": 100,
+            "type": "VAEDecode",
+            "pos": [
+                2231.3652429199224,
+                2475.413763427735
+            ],
+            "size": {
+                "0": 210,
+                "1": 46
+            },
+            "flags": {},
+            "order": 34,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "samples",
+                    "type": "LATENT",
+                    "link": 136
+                },
+                {
+                    "name": "vae",
+                    "type": "VAE",
+                    "link": 137
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "IMAGE",
+                    "type": "IMAGE",
+                    "links": [
+                        138
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "VAE Decode"
+            }
+        },
+        {
+            "id": 101,
+            "type": "SaveImage",
+            "pos": [
+                2485.3652429199224,
+                2466.413763427735
+            ],
+            "size": {
+                "0": 435.8592529296875,
+                "1": 499.91339111328125
+            },
+            "flags": {},
+            "order": 49,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "images",
+                    "type": "IMAGE",
+                    "link": 138
+                }
+            ],
+            "properties": {},
+            "widgets_values": [
+                "ComfyUI"
+            ]
+        },
+        {
+            "id": 5,
+            "type": "EmptyLatentImage",
+            "pos": [
+                45,
+                691
+            ],
+            "size": {
+                "0": 315,
+                "1": 106
+            },
+            "flags": {},
+            "order": 3,
+            "mode": 0,
+            "outputs": [
+                {
+                    "name": "LATENT",
+                    "type": "LATENT",
+                    "links": [],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "Empty Latent Image"
+            },
+            "widgets_values": [
+                768,
+                768,
+                1
+            ]
+        },
+        {
+            "id": 98,
+            "type": "SaveImage",
+            "pos": [
+                2485,
+                1881
+            ],
+            "size": {
+                "0": 435.8592529296875,
+                "1": 499.91339111328125
+            },
+            "flags": {},
+            "order": 48,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "images",
+                    "type": "IMAGE",
+                    "link": 130
+                }
+            ],
+            "properties": {},
+            "widgets_values": [
+                "ComfyUI"
+            ]
+        },
+        {
+            "id": 91,
+            "type": "VAEDecode",
+            "pos": [
+                2216,
+                574
+            ],
+            "size": {
+                "0": 210,
+                "1": 46
+            },
+            "flags": {},
+            "order": 31,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "samples",
+                    "type": "LATENT",
+                    "link": 112
+                },
+                {
+                    "name": "vae",
+                    "type": "VAE",
+                    "link": 113
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "IMAGE",
+                    "type": "IMAGE",
+                    "links": [
+                        114
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "VAE Decode"
+            }
+        },
+        {
+            "id": 133,
+            "type": "KSampler",
+            "pos": [
+                3012.776860649989,
+                -41.03876095821555
+            ],
+            "size": {
+                "0": 295.8985900878906,
+                "1": 234
+            },
+            "flags": {
+                "pinned": true
+            },
+            "order": 20,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "model",
+                    "type": "MODEL",
+                    "link": 224
+                },
+                {
+                    "name": "positive",
+                    "type": "CONDITIONING",
+                    "link": 225
+                },
+                {
+                    "name": "negative",
+                    "type": "CONDITIONING",
+                    "link": 226
+                },
+                {
+                    "name": "latent_image",
+                    "type": "LATENT",
+                    "link": 227
+                },
+                {
+                    "name": "seed",
+                    "type": "INT",
+                    "link": 228,
+                    "widget": {
+                        "name": "seed",
+                        "config": [
+                            "INT",
+                            {
+                                "default": 0,
+                                "min": 0,
+                                "max": 18446744073709552000
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "steps",
+                    "type": "INT",
+                    "link": 229,
+                    "widget": {
+                        "name": "steps",
+                        "config": [
+                            "INT",
+                            {
+                                "default": 20,
+                                "min": 1,
+                                "max": 10000
+                            }
+                        ]
+                    },
+                    "slot_index": 5
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "LATENT",
+                    "type": "LATENT",
+                    "links": [
+                        230
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "KSampler"
+            },
+            "widgets_values": [
+                735802039527701,
+                false,
+                17,
+                5,
+                "ddim",
+                "ddim_uniform",
+                1
+            ]
+        },
+        {
+            "id": 134,
+            "type": "VAEDecode",
+            "pos": [
+                3376.776860649989,
+                130.9612390417847
+            ],
+            "size": {
+                "0": 210,
+                "1": 46
+            },
+            "flags": {},
+            "order": 35,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "samples",
+                    "type": "LATENT",
+                    "link": 230
+                },
+                {
+                    "name": "vae",
+                    "type": "VAE",
+                    "link": 231
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "IMAGE",
+                    "type": "IMAGE",
+                    "links": [
+                        232
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "VAE Decode"
+            }
+        },
+        {
+            "id": 135,
+            "type": "SaveImage",
+            "pos": [
+                3630.776860649989,
+                121.96123904178471
+            ],
+            "size": {
+                "0": 435.8592529296875,
+                "1": 499.91339111328125
+            },
+            "flags": {},
+            "order": 50,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "images",
+                    "type": "IMAGE",
+                    "link": 232
+                }
+            ],
+            "properties": {},
+            "widgets_values": [
+                "ComfyUI"
+            ]
+        },
+        {
+            "id": 136,
+            "type": "KSampler",
+            "pos": [
+                3023.776860649989,
+                562.9612390417839
+            ],
+            "size": {
+                "0": 295.8985900878906,
+                "1": 234
+            },
+            "flags": {
+                "pinned": true
+            },
+            "order": 21,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "model",
+                    "type": "MODEL",
+                    "link": 233
+                },
+                {
+                    "name": "positive",
+                    "type": "CONDITIONING",
+                    "link": 234
+                },
+                {
+                    "name": "negative",
+                    "type": "CONDITIONING",
+                    "link": 235
+                },
+                {
+                    "name": "latent_image",
+                    "type": "LATENT",
+                    "link": 236
+                },
+                {
+                    "name": "seed",
+                    "type": "INT",
+                    "link": 237,
+                    "widget": {
+                        "name": "seed",
+                        "config": [
+                            "INT",
+                            {
+                                "default": 0,
+                                "min": 0,
+                                "max": 18446744073709552000
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "steps",
+                    "type": "INT",
+                    "link": 238,
+                    "widget": {
+                        "name": "steps",
+                        "config": [
+                            "INT",
+                            {
+                                "default": 20,
+                                "min": 1,
+                                "max": 10000
+                            }
+                        ]
+                    }
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "LATENT",
+                    "type": "LATENT",
+                    "links": [
+                        239
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "KSampler"
+            },
+            "widgets_values": [
+                735802039527701,
+                false,
+                17,
+                10,
+                "ddim",
+                "ddim_uniform",
+                1
+            ]
+        },
+        {
+            "id": 137,
+            "type": "VAEDecode",
+            "pos": [
+                3370.776860649989,
+                589.9612390417839
+            ],
+            "size": {
+                "0": 210,
+                "1": 46
+            },
+            "flags": {},
+            "order": 36,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "samples",
+                    "type": "LATENT",
+                    "link": 239
+                },
+                {
+                    "name": "vae",
+                    "type": "VAE",
+                    "link": 240
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "IMAGE",
+                    "type": "IMAGE",
+                    "links": [
+                        241
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "VAE Decode"
+            }
+        },
+        {
+            "id": 138,
+            "type": "SaveImage",
+            "pos": [
+                3642.1075614703027,
+                726.1193285785254
+            ],
+            "size": {
+                "0": 435.8592529296875,
+                "1": 499.91339111328125
+            },
+            "flags": {},
+            "order": 51,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "images",
+                    "type": "IMAGE",
+                    "link": 241
+                }
+            ],
+            "properties": {},
+            "widgets_values": [
+                "ComfyUI"
+            ]
+        },
+        {
+            "id": 139,
+            "type": "KSampler",
+            "pos": [
+                3030.776860649989,
+                1151.9612390417853
+            ],
+            "size": {
+                "0": 295.8985900878906,
+                "1": 234
+            },
+            "flags": {
+                "pinned": true
+            },
+            "order": 22,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "model",
+                    "type": "MODEL",
+                    "link": 242
+                },
+                {
+                    "name": "positive",
+                    "type": "CONDITIONING",
+                    "link": 243
+                },
+                {
+                    "name": "negative",
+                    "type": "CONDITIONING",
+                    "link": 244
+                },
+                {
+                    "name": "latent_image",
+                    "type": "LATENT",
+                    "link": 245
+                },
+                {
+                    "name": "seed",
+                    "type": "INT",
+                    "link": 246,
+                    "widget": {
+                        "name": "seed",
+                        "config": [
+                            "INT",
+                            {
+                                "default": 0,
+                                "min": 0,
+                                "max": 18446744073709552000
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "steps",
+                    "type": "INT",
+                    "link": 247,
+                    "widget": {
+                        "name": "steps",
+                        "config": [
+                            "INT",
+                            {
+                                "default": 20,
+                                "min": 1,
+                                "max": 10000
+                            }
+                        ]
+                    }
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "LATENT",
+                    "type": "LATENT",
+                    "links": [
+                        248
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "KSampler"
+            },
+            "widgets_values": [
+                735802039527701,
+                false,
+                17,
+                15,
+                "ddim",
+                "ddim_uniform",
+                1
+            ]
+        },
+        {
+            "id": 140,
+            "type": "VAEDecode",
+            "pos": [
+                3394.549601470301,
+                1323.4924790747416
+            ],
+            "size": {
+                "0": 210,
+                "1": 46
+            },
+            "flags": {},
+            "order": 37,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "samples",
+                    "type": "LATENT",
+                    "link": 248
+                },
+                {
+                    "name": "vae",
+                    "type": "VAE",
+                    "link": 249
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "IMAGE",
+                    "type": "IMAGE",
+                    "links": [
+                        250
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "VAE Decode"
+            }
+        },
+        {
+            "id": 141,
+            "type": "SaveImage",
+            "pos": [
+                3648.549601470301,
+                1314.4924790747416
+            ],
+            "size": {
+                "0": 435.8592529296875,
+                "1": 499.91339111328125
+            },
+            "flags": {},
+            "order": 52,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "images",
+                    "type": "IMAGE",
+                    "link": 250
+                }
+            ],
+            "properties": {},
+            "widgets_values": [
+                "ComfyUI"
+            ]
+        },
+        {
+            "id": 142,
+            "type": "KSampler",
+            "pos": [
+                3024.776860649989,
+                1741.9612390417853
+            ],
+            "size": {
+                "0": 295.8985900878906,
+                "1": 234
+            },
+            "flags": {
+                "pinned": true
+            },
+            "order": 23,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "model",
+                    "type": "MODEL",
+                    "link": 251
+                },
+                {
+                    "name": "positive",
+                    "type": "CONDITIONING",
+                    "link": 252
+                },
+                {
+                    "name": "negative",
+                    "type": "CONDITIONING",
+                    "link": 253
+                },
+                {
+                    "name": "latent_image",
+                    "type": "LATENT",
+                    "link": 254
+                },
+                {
+                    "name": "seed",
+                    "type": "INT",
+                    "link": 255,
+                    "widget": {
+                        "name": "seed",
+                        "config": [
+                            "INT",
+                            {
+                                "default": 0,
+                                "min": 0,
+                                "max": 18446744073709552000
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "steps",
+                    "type": "INT",
+                    "link": 256,
+                    "widget": {
+                        "name": "steps",
+                        "config": [
+                            "INT",
+                            {
+                                "default": 20,
+                                "min": 1,
+                                "max": 10000
+                            }
+                        ]
+                    }
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "LATENT",
+                    "type": "LATENT",
+                    "links": [
+                        257
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "KSampler"
+            },
+            "widgets_values": [
+                735802039527701,
+                false,
+                17,
+                20,
+                "ddim",
+                "ddim_uniform",
+                1
+            ]
+        },
+        {
+            "id": 143,
+            "type": "VAEDecode",
+            "pos": [
+                3389.0965122214848,
+                1913.4722690775118
+            ],
+            "size": {
+                "0": 210,
+                "1": 46
+            },
+            "flags": {},
+            "order": 38,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "samples",
+                    "type": "LATENT",
+                    "link": 257
+                },
+                {
+                    "name": "vae",
+                    "type": "VAE",
+                    "link": 258
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "IMAGE",
+                    "type": "IMAGE",
+                    "links": [
+                        259
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "VAE Decode"
+            }
+        },
+        {
+            "id": 144,
+            "type": "SaveImage",
+            "pos": [
+                3639.776860649989,
+                1896.961239041784
+            ],
+            "size": {
+                "0": 435.8592529296875,
+                "1": 499.91339111328125
+            },
+            "flags": {},
+            "order": 53,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "images",
+                    "type": "IMAGE",
+                    "link": 259
+                }
+            ],
+            "properties": {},
+            "widgets_values": [
+                "ComfyUI"
+            ]
+        },
+        {
+            "id": 145,
+            "type": "KSampler",
+            "pos": [
+                3021.776860649989,
+                2318.961239041783
+            ],
+            "size": {
+                "0": 295.8985900878906,
+                "1": 234
+            },
+            "flags": {
+                "pinned": true
+            },
+            "order": 24,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "model",
+                    "type": "MODEL",
+                    "link": 260
+                },
+                {
+                    "name": "positive",
+                    "type": "CONDITIONING",
+                    "link": 261
+                },
+                {
+                    "name": "negative",
+                    "type": "CONDITIONING",
+                    "link": 262
+                },
+                {
+                    "name": "latent_image",
+                    "type": "LATENT",
+                    "link": 263
+                },
+                {
+                    "name": "seed",
+                    "type": "INT",
+                    "link": 264,
+                    "widget": {
+                        "name": "seed",
+                        "config": [
+                            "INT",
+                            {
+                                "default": 0,
+                                "min": 0,
+                                "max": 18446744073709552000
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "steps",
+                    "type": "INT",
+                    "link": 265,
+                    "widget": {
+                        "name": "steps",
+                        "config": [
+                            "INT",
+                            {
+                                "default": 20,
+                                "min": 1,
+                                "max": 10000
+                            }
+                        ]
+                    }
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "LATENT",
+                    "type": "LATENT",
+                    "links": [
+                        266
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "KSampler"
+            },
+            "widgets_values": [
+                735802039527701,
+                false,
+                17,
+                25,
+                "ddim",
+                "ddim_uniform",
+                1
+            ]
+        },
+        {
+            "id": 146,
+            "type": "VAEDecode",
+            "pos": [
+                3386.1421035699113,
+                2491.3750024695178
+            ],
+            "size": {
+                "0": 210,
+                "1": 46
+            },
+            "flags": {},
+            "order": 39,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "samples",
+                    "type": "LATENT",
+                    "link": 266
+                },
+                {
+                    "name": "vae",
+                    "type": "VAE",
+                    "link": 267
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "IMAGE",
+                    "type": "IMAGE",
+                    "links": [
+                        268
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "VAE Decode"
+            }
+        },
+        {
+            "id": 147,
+            "type": "SaveImage",
+            "pos": [
+                3640.1421035699113,
+                2482.3750024695178
+            ],
+            "size": {
+                "0": 435.8592529296875,
+                "1": 499.91339111328125
+            },
+            "flags": {},
+            "order": 54,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "images",
+                    "type": "IMAGE",
+                    "link": 268
+                }
+            ],
+            "properties": {},
+            "widgets_values": [
+                "ComfyUI"
+            ]
+        },
+        {
+            "id": 149,
+            "type": "KSampler",
+            "pos": [
+                4255.594708541408,
+                -34.13421852942937
+            ],
+            "size": {
+                "0": 295.8985900878906,
+                "1": 234
+            },
+            "flags": {
+                "pinned": true
+            },
+            "order": 25,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "model",
+                    "type": "MODEL",
+                    "link": 269
+                },
+                {
+                    "name": "positive",
+                    "type": "CONDITIONING",
+                    "link": 270
+                },
+                {
+                    "name": "negative",
+                    "type": "CONDITIONING",
+                    "link": 271
+                },
+                {
+                    "name": "latent_image",
+                    "type": "LATENT",
+                    "link": 272
+                },
+                {
+                    "name": "seed",
+                    "type": "INT",
+                    "link": 273,
+                    "widget": {
+                        "name": "seed",
+                        "config": [
+                            "INT",
+                            {
+                                "default": 0,
+                                "min": 0,
+                                "max": 18446744073709552000
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "steps",
+                    "type": "INT",
+                    "link": 274,
+                    "widget": {
+                        "name": "steps",
+                        "config": [
+                            "INT",
+                            {
+                                "default": 20,
+                                "min": 1,
+                                "max": 10000
+                            }
+                        ]
+                    },
+                    "slot_index": 5
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "LATENT",
+                    "type": "LATENT",
+                    "links": [
+                        275
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "KSampler"
+            },
+            "widgets_values": [
+                735802039527701,
+                false,
+                10,
+                5,
+                "ddim",
+                "ddim_uniform",
+                1
+            ]
+        },
+        {
+            "id": 150,
+            "type": "VAEDecode",
+            "pos": [
+                4619.594708541404,
+                137.8657814705707
+            ],
+            "size": {
+                "0": 210,
+                "1": 46
+            },
+            "flags": {},
+            "order": 40,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "samples",
+                    "type": "LATENT",
+                    "link": 275
+                },
+                {
+                    "name": "vae",
+                    "type": "VAE",
+                    "link": 276
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "IMAGE",
+                    "type": "IMAGE",
+                    "links": [
+                        277
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "VAE Decode"
+            }
+        },
+        {
+            "id": 151,
+            "type": "SaveImage",
+            "pos": [
+                4873.594708541405,
+                128.86578147057068
+            ],
+            "size": {
+                "0": 435.8592529296875,
+                "1": 499.91339111328125
+            },
+            "flags": {},
+            "order": 55,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "images",
+                    "type": "IMAGE",
+                    "link": 277
+                }
+            ],
+            "properties": {},
+            "widgets_values": [
+                "ComfyUI"
+            ]
+        },
+        {
+            "id": 152,
+            "type": "KSampler",
+            "pos": [
+                4266.594708541407,
+                569.8657814705705
+            ],
+            "size": {
+                "0": 295.8985900878906,
+                "1": 234
+            },
+            "flags": {
+                "pinned": true
+            },
+            "order": 26,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "model",
+                    "type": "MODEL",
+                    "link": 278
+                },
+                {
+                    "name": "positive",
+                    "type": "CONDITIONING",
+                    "link": 279
+                },
+                {
+                    "name": "negative",
+                    "type": "CONDITIONING",
+                    "link": 280
+                },
+                {
+                    "name": "latent_image",
+                    "type": "LATENT",
+                    "link": 281
+                },
+                {
+                    "name": "seed",
+                    "type": "INT",
+                    "link": 282,
+                    "widget": {
+                        "name": "seed",
+                        "config": [
+                            "INT",
+                            {
+                                "default": 0,
+                                "min": 0,
+                                "max": 18446744073709552000
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "steps",
+                    "type": "INT",
+                    "link": 283,
+                    "widget": {
+                        "name": "steps",
+                        "config": [
+                            "INT",
+                            {
+                                "default": 20,
+                                "min": 1,
+                                "max": 10000
+                            }
+                        ]
+                    }
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "LATENT",
+                    "type": "LATENT",
+                    "links": [
+                        284
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "KSampler"
+            },
+            "widgets_values": [
+                735802039527701,
+                false,
+                10,
+                10,
+                "ddim",
+                "ddim_uniform",
+                1
+            ]
+        },
+        {
+            "id": 153,
+            "type": "VAEDecode",
+            "pos": [
+                4613.594708541404,
+                596.8657814705707
+            ],
+            "size": {
+                "0": 210,
+                "1": 46
+            },
+            "flags": {},
+            "order": 41,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "samples",
+                    "type": "LATENT",
+                    "link": 284
+                },
+                {
+                    "name": "vae",
+                    "type": "VAE",
+                    "link": 285
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "IMAGE",
+                    "type": "IMAGE",
+                    "links": [
+                        286
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "VAE Decode"
+            }
+        },
+        {
+            "id": 154,
+            "type": "SaveImage",
+            "pos": [
+                4884.925409361719,
+                733.0238710073121
+            ],
+            "size": {
+                "0": 435.8592529296875,
+                "1": 499.91339111328125
+            },
+            "flags": {},
+            "order": 56,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "images",
+                    "type": "IMAGE",
+                    "link": 286
+                }
+            ],
+            "properties": {},
+            "widgets_values": [
+                "ComfyUI"
+            ]
+        },
+        {
+            "id": 155,
+            "type": "KSampler",
+            "pos": [
+                4273.594708541406,
+                1158.8657814705703
+            ],
+            "size": {
+                "0": 295.8985900878906,
+                "1": 234
+            },
+            "flags": {
+                "pinned": true
+            },
+            "order": 27,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "model",
+                    "type": "MODEL",
+                    "link": 287
+                },
+                {
+                    "name": "positive",
+                    "type": "CONDITIONING",
+                    "link": 288
+                },
+                {
+                    "name": "negative",
+                    "type": "CONDITIONING",
+                    "link": 289
+                },
+                {
+                    "name": "latent_image",
+                    "type": "LATENT",
+                    "link": 290
+                },
+                {
+                    "name": "seed",
+                    "type": "INT",
+                    "link": 291,
+                    "widget": {
+                        "name": "seed",
+                        "config": [
+                            "INT",
+                            {
+                                "default": 0,
+                                "min": 0,
+                                "max": 18446744073709552000
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "steps",
+                    "type": "INT",
+                    "link": 292,
+                    "widget": {
+                        "name": "steps",
+                        "config": [
+                            "INT",
+                            {
+                                "default": 20,
+                                "min": 1,
+                                "max": 10000
+                            }
+                        ]
+                    }
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "LATENT",
+                    "type": "LATENT",
+                    "links": [
+                        293
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "KSampler"
+            },
+            "widgets_values": [
+                735802039527701,
+                false,
+                10,
+                15,
+                "ddim",
+                "ddim_uniform",
+                1
+            ]
+        },
+        {
+            "id": 156,
+            "type": "VAEDecode",
+            "pos": [
+                4637.367449361715,
+                1330.3970215035265
+            ],
+            "size": {
+                "0": 210,
+                "1": 46
+            },
+            "flags": {},
+            "order": 42,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "samples",
+                    "type": "LATENT",
+                    "link": 293
+                },
+                {
+                    "name": "vae",
+                    "type": "VAE",
+                    "link": 294
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "IMAGE",
+                    "type": "IMAGE",
+                    "links": [
+                        295
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "VAE Decode"
+            }
+        },
+        {
+            "id": 157,
+            "type": "SaveImage",
+            "pos": [
+                4891.367449361717,
+                1321.3970215035265
+            ],
+            "size": {
+                "0": 435.8592529296875,
+                "1": 499.91339111328125
+            },
+            "flags": {},
+            "order": 57,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "images",
+                    "type": "IMAGE",
+                    "link": 295
+                }
+            ],
+            "properties": {},
+            "widgets_values": [
+                "ComfyUI"
+            ]
+        },
+        {
+            "id": 158,
+            "type": "KSampler",
+            "pos": [
+                4267.594708541407,
+                1748.8657814705703
+            ],
+            "size": {
+                "0": 295.8985900878906,
+                "1": 234
+            },
+            "flags": {
+                "pinned": true
+            },
+            "order": 28,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "model",
+                    "type": "MODEL",
+                    "link": 296
+                },
+                {
+                    "name": "positive",
+                    "type": "CONDITIONING",
+                    "link": 297
+                },
+                {
+                    "name": "negative",
+                    "type": "CONDITIONING",
+                    "link": 298
+                },
+                {
+                    "name": "latent_image",
+                    "type": "LATENT",
+                    "link": 299
+                },
+                {
+                    "name": "seed",
+                    "type": "INT",
+                    "link": 300,
+                    "widget": {
+                        "name": "seed",
+                        "config": [
+                            "INT",
+                            {
+                                "default": 0,
+                                "min": 0,
+                                "max": 18446744073709552000
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "steps",
+                    "type": "INT",
+                    "link": 301,
+                    "widget": {
+                        "name": "steps",
+                        "config": [
+                            "INT",
+                            {
+                                "default": 20,
+                                "min": 1,
+                                "max": 10000
+                            }
+                        ]
+                    }
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "LATENT",
+                    "type": "LATENT",
+                    "links": [
+                        302
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "KSampler"
+            },
+            "widgets_values": [
+                735802039527701,
+                false,
+                10,
+                20,
+                "ddim",
+                "ddim_uniform",
+                1
+            ]
+        },
+        {
+            "id": 159,
+            "type": "VAEDecode",
+            "pos": [
+                4631.914360112901,
+                1920.376811506298
+            ],
+            "size": {
+                "0": 210,
+                "1": 46
+            },
+            "flags": {},
+            "order": 43,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "samples",
+                    "type": "LATENT",
+                    "link": 302
+                },
+                {
+                    "name": "vae",
+                    "type": "VAE",
+                    "link": 303
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "IMAGE",
+                    "type": "IMAGE",
+                    "links": [
+                        304
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "VAE Decode"
+            }
+        },
+        {
+            "id": 160,
+            "type": "SaveImage",
+            "pos": [
+                4882.594708541405,
+                1903.8657814705703
+            ],
+            "size": {
+                "0": 435.8592529296875,
+                "1": 499.91339111328125
+            },
+            "flags": {},
+            "order": 58,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "images",
+                    "type": "IMAGE",
+                    "link": 304
+                }
+            ],
+            "properties": {},
+            "widgets_values": [
+                "ComfyUI"
+            ]
+        },
+        {
+            "id": 161,
+            "type": "KSampler",
+            "pos": [
+                4264.594708541407,
+                2325.865781470571
+            ],
+            "size": {
+                "0": 295.8985900878906,
+                "1": 234
+            },
+            "flags": {
+                "pinned": true
+            },
+            "order": 29,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "model",
+                    "type": "MODEL",
+                    "link": 305
+                },
+                {
+                    "name": "positive",
+                    "type": "CONDITIONING",
+                    "link": 306
+                },
+                {
+                    "name": "negative",
+                    "type": "CONDITIONING",
+                    "link": 307
+                },
+                {
+                    "name": "latent_image",
+                    "type": "LATENT",
+                    "link": 308
+                },
+                {
+                    "name": "seed",
+                    "type": "INT",
+                    "link": 309,
+                    "widget": {
+                        "name": "seed",
+                        "config": [
+                            "INT",
+                            {
+                                "default": 0,
+                                "min": 0,
+                                "max": 18446744073709552000
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "steps",
+                    "type": "INT",
+                    "link": 310,
+                    "widget": {
+                        "name": "steps",
+                        "config": [
+                            "INT",
+                            {
+                                "default": 20,
+                                "min": 1,
+                                "max": 10000
+                            }
+                        ]
+                    }
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "LATENT",
+                    "type": "LATENT",
+                    "links": [
+                        311
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "KSampler"
+            },
+            "widgets_values": [
+                735802039527701,
+                false,
+                10,
+                25,
+                "ddim",
+                "ddim_uniform",
+                1
+            ]
+        },
+        {
+            "id": 162,
+            "type": "VAEDecode",
+            "pos": [
+                4628.959951461326,
+                2498.279544898306
+            ],
+            "size": {
+                "0": 210,
+                "1": 46
+            },
+            "flags": {},
+            "order": 44,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "samples",
+                    "type": "LATENT",
+                    "link": 311
+                },
+                {
+                    "name": "vae",
+                    "type": "VAE",
+                    "link": 312
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "IMAGE",
+                    "type": "IMAGE",
+                    "links": [
+                        313
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "VAE Decode"
+            }
+        },
+        {
+            "id": 163,
+            "type": "SaveImage",
+            "pos": [
+                4882.959951461328,
+                2489.279544898306
+            ],
+            "size": {
+                "0": 435.8592529296875,
+                "1": 499.91339111328125
+            },
+            "flags": {},
+            "order": 59,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "images",
+                    "type": "IMAGE",
+                    "link": 313
+                }
+            ],
+            "properties": {},
+            "widgets_values": [
+                "ComfyUI"
+            ]
+        },
+        {
+            "id": 132,
+            "type": "PrimitiveNode",
+            "pos": [
+                1861,
+                -286
+            ],
+            "size": {
+                "0": 210,
+                "1": 82
+            },
+            "flags": {},
+            "order": 4,
+            "mode": 0,
+            "outputs": [
+                {
+                    "name": "INT",
+                    "type": "INT",
+                    "links": [
+                        219,
+                        220,
+                        221,
+                        222,
+                        223
+                    ],
+                    "widget": {
+                        "name": "steps",
+                        "config": [
+                            "INT",
+                            {
+                                "default": 20,
+                                "min": 1,
+                                "max": 10000
+                            }
+                        ]
+                    },
+                    "slot_index": 0
+                }
+            ],
+            "properties": {},
+            "widgets_values": [
+                25,
+                false
+            ]
+        },
+        {
+            "id": 148,
+            "type": "PrimitiveNode",
+            "pos": [
+                3016,
+                -270
+            ],
+            "size": {
+                "0": 210,
+                "1": 82
+            },
+            "flags": {},
+            "order": 5,
+            "mode": 0,
+            "outputs": [
+                {
+                    "name": "INT",
+                    "type": "INT",
+                    "links": [
+                        229,
+                        238,
+                        247,
+                        256,
+                        265
+                    ],
+                    "widget": {
+                        "name": "steps",
+                        "config": [
+                            "INT",
+                            {
+                                "default": 20,
+                                "min": 1,
+                                "max": 10000
+                            }
+                        ]
+                    },
+                    "slot_index": 0
+                }
+            ],
+            "properties": {},
+            "widgets_values": [
+                17,
+                false
+            ]
+        },
+        {
+            "id": 164,
+            "type": "PrimitiveNode",
+            "pos": [
+                4259,
+                -263
+            ],
+            "size": {
+                "0": 210,
+                "1": 82
+            },
+            "flags": {},
+            "order": 6,
+            "mode": 0,
+            "outputs": [
+                {
+                    "name": "INT",
+                    "type": "INT",
+                    "links": [
+                        274,
+                        283,
+                        292,
+                        301,
+                        310
+                    ],
+                    "widget": {
+                        "name": "steps",
+                        "config": [
+                            "INT",
+                            {
+                                "default": 20,
+                                "min": 1,
+                                "max": 10000
+                            }
+                        ]
+                    },
+                    "slot_index": 0
+                }
+            ],
+            "properties": {},
+            "widgets_values": [
+                10,
+                false
+            ]
+        }
+    ],
+    "links": [
+        [
+            3,
+            4,
+            1,
+            6,
+            0,
+            "CLIP"
+        ],
+        [
+            5,
+            4,
+            1,
+            7,
+            0,
+            "CLIP"
+        ],
+        [
+            12,
+            3,
+            0,
+            8,
+            0,
+            "LATENT"
+        ],
+        [
+            15,
+            18,
+            0,
+            20,
+            0,
+            "IMAGE"
+        ],
+        [
+            16,
+            4,
+            2,
+            20,
+            1,
+            "VAE"
+        ],
+        [
+            23,
+            6,
+            0,
+            32,
+            0,
+            "*"
+        ],
+        [
+            24,
+            32,
+            0,
+            3,
+            1,
+            "CONDITIONING"
+        ],
+        [
+            25,
+            4,
+            0,
+            33,
+            0,
+            "*"
+        ],
+        [
+            26,
+            33,
+            0,
+            3,
+            0,
+            "MODEL"
+        ],
+        [
+            28,
+            7,
+            0,
+            34,
+            0,
+            "*"
+        ],
+        [
+            29,
+            34,
+            0,
+            3,
+            2,
+            "CONDITIONING"
+        ],
+        [
+            31,
+            35,
+            0,
+            3,
+            3,
+            "LATENT"
+        ],
+        [
+            33,
+            4,
+            2,
+            36,
+            0,
+            "*"
+        ],
+        [
+            34,
+            36,
+            0,
+            8,
+            1,
+            "VAE"
+        ],
+        [
+            44,
+            8,
+            0,
+            48,
+            0,
+            "IMAGE"
+        ],
+        [
+            52,
+            55,
+            0,
+            3,
+            4,
+            "INT"
+        ],
+        [
+            80,
+            20,
+            0,
+            35,
+            0,
+            "*"
+        ],
+        [
+            107,
+            33,
+            0,
+            90,
+            0,
+            "MODEL"
+        ],
+        [
+            108,
+            32,
+            0,
+            90,
+            1,
+            "CONDITIONING"
+        ],
+        [
+            109,
+            34,
+            0,
+            90,
+            2,
+            "CONDITIONING"
+        ],
+        [
+            110,
+            35,
+            0,
+            90,
+            3,
+            "LATENT"
+        ],
+        [
+            111,
+            55,
+            0,
+            90,
+            4,
+            "INT"
+        ],
+        [
+            112,
+            90,
+            0,
+            91,
+            0,
+            "LATENT"
+        ],
+        [
+            113,
+            36,
+            0,
+            91,
+            1,
+            "VAE"
+        ],
+        [
+            114,
+            91,
+            0,
+            92,
+            0,
+            "IMAGE"
+        ],
+        [
+            115,
+            33,
+            0,
+            93,
+            0,
+            "MODEL"
+        ],
+        [
+            116,
+            32,
+            0,
+            93,
+            1,
+            "CONDITIONING"
+        ],
+        [
+            117,
+            34,
+            0,
+            93,
+            2,
+            "CONDITIONING"
+        ],
+        [
+            118,
+            35,
+            0,
+            93,
+            3,
+            "LATENT"
+        ],
+        [
+            119,
+            55,
+            0,
+            93,
+            4,
+            "INT"
+        ],
+        [
+            120,
+            93,
+            0,
+            94,
+            0,
+            "LATENT"
+        ],
+        [
+            121,
+            36,
+            0,
+            94,
+            1,
+            "VAE"
+        ],
+        [
+            122,
+            94,
+            0,
+            95,
+            0,
+            "IMAGE"
+        ],
+        [
+            123,
+            33,
+            0,
+            96,
+            0,
+            "MODEL"
+        ],
+        [
+            124,
+            32,
+            0,
+            96,
+            1,
+            "CONDITIONING"
+        ],
+        [
+            125,
+            34,
+            0,
+            96,
+            2,
+            "CONDITIONING"
+        ],
+        [
+            126,
+            35,
+            0,
+            96,
+            3,
+            "LATENT"
+        ],
+        [
+            127,
+            55,
+            0,
+            96,
+            4,
+            "INT"
+        ],
+        [
+            128,
+            96,
+            0,
+            97,
+            0,
+            "LATENT"
+        ],
+        [
+            129,
+            36,
+            0,
+            97,
+            1,
+            "VAE"
+        ],
+        [
+            130,
+            97,
+            0,
+            98,
+            0,
+            "IMAGE"
+        ],
+        [
+            131,
+            33,
+            0,
+            99,
+            0,
+            "MODEL"
+        ],
+        [
+            132,
+            32,
+            0,
+            99,
+            1,
+            "CONDITIONING"
+        ],
+        [
+            133,
+            34,
+            0,
+            99,
+            2,
+            "CONDITIONING"
+        ],
+        [
+            134,
+            35,
+            0,
+            99,
+            3,
+            "LATENT"
+        ],
+        [
+            135,
+            55,
+            0,
+            99,
+            4,
+            "INT"
+        ],
+        [
+            136,
+            99,
+            0,
+            100,
+            0,
+            "LATENT"
+        ],
+        [
+            137,
+            36,
+            0,
+            100,
+            1,
+            "VAE"
+        ],
+        [
+            138,
+            100,
+            0,
+            101,
+            0,
+            "IMAGE"
+        ],
+        [
+            219,
+            132,
+            0,
+            3,
+            5,
+            "INT"
+        ],
+        [
+            220,
+            132,
+            0,
+            90,
+            5,
+            "INT"
+        ],
+        [
+            221,
+            132,
+            0,
+            93,
+            5,
+            "INT"
+        ],
+        [
+            222,
+            132,
+            0,
+            96,
+            5,
+            "INT"
+        ],
+        [
+            223,
+            132,
+            0,
+            99,
+            5,
+            "INT"
+        ],
+        [
+            224,
+            33,
+            0,
+            133,
+            0,
+            "MODEL"
+        ],
+        [
+            225,
+            32,
+            0,
+            133,
+            1,
+            "CONDITIONING"
+        ],
+        [
+            226,
+            34,
+            0,
+            133,
+            2,
+            "CONDITIONING"
+        ],
+        [
+            227,
+            35,
+            0,
+            133,
+            3,
+            "LATENT"
+        ],
+        [
+            228,
+            55,
+            0,
+            133,
+            4,
+            "INT"
+        ],
+        [
+            229,
+            148,
+            0,
+            133,
+            5,
+            "INT"
+        ],
+        [
+            230,
+            133,
+            0,
+            134,
+            0,
+            "LATENT"
+        ],
+        [
+            231,
+            36,
+            0,
+            134,
+            1,
+            "VAE"
+        ],
+        [
+            232,
+            134,
+            0,
+            135,
+            0,
+            "IMAGE"
+        ],
+        [
+            233,
+            33,
+            0,
+            136,
+            0,
+            "MODEL"
+        ],
+        [
+            234,
+            32,
+            0,
+            136,
+            1,
+            "CONDITIONING"
+        ],
+        [
+            235,
+            34,
+            0,
+            136,
+            2,
+            "CONDITIONING"
+        ],
+        [
+            236,
+            35,
+            0,
+            136,
+            3,
+            "LATENT"
+        ],
+        [
+            237,
+            55,
+            0,
+            136,
+            4,
+            "INT"
+        ],
+        [
+            238,
+            148,
+            0,
+            136,
+            5,
+            "INT"
+        ],
+        [
+            239,
+            136,
+            0,
+            137,
+            0,
+            "LATENT"
+        ],
+        [
+            240,
+            36,
+            0,
+            137,
+            1,
+            "VAE"
+        ],
+        [
+            241,
+            137,
+            0,
+            138,
+            0,
+            "IMAGE"
+        ],
+        [
+            242,
+            33,
+            0,
+            139,
+            0,
+            "MODEL"
+        ],
+        [
+            243,
+            32,
+            0,
+            139,
+            1,
+            "CONDITIONING"
+        ],
+        [
+            244,
+            34,
+            0,
+            139,
+            2,
+            "CONDITIONING"
+        ],
+        [
+            245,
+            35,
+            0,
+            139,
+            3,
+            "LATENT"
+        ],
+        [
+            246,
+            55,
+            0,
+            139,
+            4,
+            "INT"
+        ],
+        [
+            247,
+            148,
+            0,
+            139,
+            5,
+            "INT"
+        ],
+        [
+            248,
+            139,
+            0,
+            140,
+            0,
+            "LATENT"
+        ],
+        [
+            249,
+            36,
+            0,
+            140,
+            1,
+            "VAE"
+        ],
+        [
+            250,
+            140,
+            0,
+            141,
+            0,
+            "IMAGE"
+        ],
+        [
+            251,
+            33,
+            0,
+            142,
+            0,
+            "MODEL"
+        ],
+        [
+            252,
+            32,
+            0,
+            142,
+            1,
+            "CONDITIONING"
+        ],
+        [
+            253,
+            34,
+            0,
+            142,
+            2,
+            "CONDITIONING"
+        ],
+        [
+            254,
+            35,
+            0,
+            142,
+            3,
+            "LATENT"
+        ],
+        [
+            255,
+            55,
+            0,
+            142,
+            4,
+            "INT"
+        ],
+        [
+            256,
+            148,
+            0,
+            142,
+            5,
+            "INT"
+        ],
+        [
+            257,
+            142,
+            0,
+            143,
+            0,
+            "LATENT"
+        ],
+        [
+            258,
+            36,
+            0,
+            143,
+            1,
+            "VAE"
+        ],
+        [
+            259,
+            143,
+            0,
+            144,
+            0,
+            "IMAGE"
+        ],
+        [
+            260,
+            33,
+            0,
+            145,
+            0,
+            "MODEL"
+        ],
+        [
+            261,
+            32,
+            0,
+            145,
+            1,
+            "CONDITIONING"
+        ],
+        [
+            262,
+            34,
+            0,
+            145,
+            2,
+            "CONDITIONING"
+        ],
+        [
+            263,
+            35,
+            0,
+            145,
+            3,
+            "LATENT"
+        ],
+        [
+            264,
+            55,
+            0,
+            145,
+            4,
+            "INT"
+        ],
+        [
+            265,
+            148,
+            0,
+            145,
+            5,
+            "INT"
+        ],
+        [
+            266,
+            145,
+            0,
+            146,
+            0,
+            "LATENT"
+        ],
+        [
+            267,
+            36,
+            0,
+            146,
+            1,
+            "VAE"
+        ],
+        [
+            268,
+            146,
+            0,
+            147,
+            0,
+            "IMAGE"
+        ],
+        [
+            269,
+            33,
+            0,
+            149,
+            0,
+            "MODEL"
+        ],
+        [
+            270,
+            32,
+            0,
+            149,
+            1,
+            "CONDITIONING"
+        ],
+        [
+            271,
+            34,
+            0,
+            149,
+            2,
+            "CONDITIONING"
+        ],
+        [
+            272,
+            35,
+            0,
+            149,
+            3,
+            "LATENT"
+        ],
+        [
+            273,
+            55,
+            0,
+            149,
+            4,
+            "INT"
+        ],
+        [
+            274,
+            164,
+            0,
+            149,
+            5,
+            "INT"
+        ],
+        [
+            275,
+            149,
+            0,
+            150,
+            0,
+            "LATENT"
+        ],
+        [
+            276,
+            36,
+            0,
+            150,
+            1,
+            "VAE"
+        ],
+        [
+            277,
+            150,
+            0,
+            151,
+            0,
+            "IMAGE"
+        ],
+        [
+            278,
+            33,
+            0,
+            152,
+            0,
+            "MODEL"
+        ],
+        [
+            279,
+            32,
+            0,
+            152,
+            1,
+            "CONDITIONING"
+        ],
+        [
+            280,
+            34,
+            0,
+            152,
+            2,
+            "CONDITIONING"
+        ],
+        [
+            281,
+            35,
+            0,
+            152,
+            3,
+            "LATENT"
+        ],
+        [
+            282,
+            55,
+            0,
+            152,
+            4,
+            "INT"
+        ],
+        [
+            283,
+            164,
+            0,
+            152,
+            5,
+            "INT"
+        ],
+        [
+            284,
+            152,
+            0,
+            153,
+            0,
+            "LATENT"
+        ],
+        [
+            285,
+            36,
+            0,
+            153,
+            1,
+            "VAE"
+        ],
+        [
+            286,
+            153,
+            0,
+            154,
+            0,
+            "IMAGE"
+        ],
+        [
+            287,
+            33,
+            0,
+            155,
+            0,
+            "MODEL"
+        ],
+        [
+            288,
+            32,
+            0,
+            155,
+            1,
+            "CONDITIONING"
+        ],
+        [
+            289,
+            34,
+            0,
+            155,
+            2,
+            "CONDITIONING"
+        ],
+        [
+            290,
+            35,
+            0,
+            155,
+            3,
+            "LATENT"
+        ],
+        [
+            291,
+            55,
+            0,
+            155,
+            4,
+            "INT"
+        ],
+        [
+            292,
+            164,
+            0,
+            155,
+            5,
+            "INT"
+        ],
+        [
+            293,
+            155,
+            0,
+            156,
+            0,
+            "LATENT"
+        ],
+        [
+            294,
+            36,
+            0,
+            156,
+            1,
+            "VAE"
+        ],
+        [
+            295,
+            156,
+            0,
+            157,
+            0,
+            "IMAGE"
+        ],
+        [
+            296,
+            33,
+            0,
+            158,
+            0,
+            "MODEL"
+        ],
+        [
+            297,
+            32,
+            0,
+            158,
+            1,
+            "CONDITIONING"
+        ],
+        [
+            298,
+            34,
+            0,
+            158,
+            2,
+            "CONDITIONING"
+        ],
+        [
+            299,
+            35,
+            0,
+            158,
+            3,
+            "LATENT"
+        ],
+        [
+            300,
+            55,
+            0,
+            158,
+            4,
+            "INT"
+        ],
+        [
+            301,
+            164,
+            0,
+            158,
+            5,
+            "INT"
+        ],
+        [
+            302,
+            158,
+            0,
+            159,
+            0,
+            "LATENT"
+        ],
+        [
+            303,
+            36,
+            0,
+            159,
+            1,
+            "VAE"
+        ],
+        [
+            304,
+            159,
+            0,
+            160,
+            0,
+            "IMAGE"
+        ],
+        [
+            305,
+            33,
+            0,
+            161,
+            0,
+            "MODEL"
+        ],
+        [
+            306,
+            32,
+            0,
+            161,
+            1,
+            "CONDITIONING"
+        ],
+        [
+            307,
+            34,
+            0,
+            161,
+            2,
+            "CONDITIONING"
+        ],
+        [
+            308,
+            35,
+            0,
+            161,
+            3,
+            "LATENT"
+        ],
+        [
+            309,
+            55,
+            0,
+            161,
+            4,
+            "INT"
+        ],
+        [
+            310,
+            164,
+            0,
+            161,
+            5,
+            "INT"
+        ],
+        [
+            311,
+            161,
+            0,
+            162,
+            0,
+            "LATENT"
+        ],
+        [
+            312,
+            36,
+            0,
+            162,
+            1,
+            "VAE"
+        ],
+        [
+            313,
+            162,
+            0,
+            163,
+            0,
+            "IMAGE"
+        ]
+    ],
+    "groups": [],
+    "config": {},
+    "extra": {
+        "workspace_info": {
+            "id": "836f2de0-7176-4210-9825-411bb058023e"
+        }
+    },
+    "version": 0.4
+}
