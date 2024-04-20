@@ -1,0 +1,488 @@
+{
+    "last_node_id": 231,
+    "last_link_id": 480,
+    "nodes": [
+        {
+            "id": 48,
+            "type": "SaveImage",
+            "pos": [
+                1880.2251687680985,
+                146.87104533809799
+            ],
+            "size": {
+                "0": 435.8592529296875,
+                "1": 499.91339111328125
+            },
+            "flags": {},
+            "order": 8,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "images",
+                    "type": "IMAGE",
+                    "link": 44
+                }
+            ],
+            "properties": {},
+            "widgets_values": [
+                "ComfyUI"
+            ]
+        },
+        {
+            "id": 3,
+            "type": "KSampler",
+            "pos": [
+                1262,
+                -16
+            ],
+            "size": {
+                "0": 295.8985900878906,
+                "1": 262
+            },
+            "flags": {
+                "pinned": true
+            },
+            "order": 6,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "model",
+                    "type": "MODEL",
+                    "link": 472
+                },
+                {
+                    "name": "positive",
+                    "type": "CONDITIONING",
+                    "link": 469
+                },
+                {
+                    "name": "negative",
+                    "type": "CONDITIONING",
+                    "link": 470
+                },
+                {
+                    "name": "latent_image",
+                    "type": "LATENT",
+                    "link": 473
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "LATENT",
+                    "type": "LATENT",
+                    "links": [
+                        12
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "KSampler"
+            },
+            "widgets_values": [
+                735802039527702,
+                "fixed",
+                20,
+                8,
+                "euler_ancestral",
+                "karras",
+                1
+            ]
+        },
+        {
+            "id": 7,
+            "type": "CLIPTextEncode",
+            "pos": [
+                559,
+                140
+            ],
+            "size": {
+                "0": 425.27801513671875,
+                "1": 180.6060791015625
+            },
+            "flags": {},
+            "order": 5,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "clip",
+                    "type": "CLIP",
+                    "link": 480
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "CONDITIONING",
+                    "type": "CONDITIONING",
+                    "links": [
+                        470
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "CLIP Text Encode (Prompt)"
+            },
+            "widgets_values": [
+                "embedding:EasyNegative"
+            ]
+        },
+        {
+            "id": 6,
+            "type": "CLIPTextEncode",
+            "pos": [
+                562,
+                -87
+            ],
+            "size": {
+                "0": 422.84503173828125,
+                "1": 164.31304931640625
+            },
+            "flags": {},
+            "order": 4,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "clip",
+                    "type": "CLIP",
+                    "link": 479
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "CONDITIONING",
+                    "type": "CONDITIONING",
+                    "links": [
+                        469
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "CLIP Text Encode (Prompt)"
+            },
+            "widgets_values": [
+                "masterpiece best quality girl school uniform"
+            ]
+        },
+        {
+            "id": 5,
+            "type": "EmptyLatentImage",
+            "pos": [
+                731,
+                -280
+            ],
+            "size": {
+                "0": 315,
+                "1": 106
+            },
+            "flags": {},
+            "order": 0,
+            "mode": 0,
+            "outputs": [
+                {
+                    "name": "LATENT",
+                    "type": "LATENT",
+                    "links": [
+                        473
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "Empty Latent Image"
+            },
+            "widgets_values": [
+                512,
+                512,
+                1
+            ]
+        },
+        {
+            "id": 8,
+            "type": "VAEDecode",
+            "pos": [
+                1630,
+                127
+            ],
+            "size": {
+                "0": 210,
+                "1": 46
+            },
+            "flags": {},
+            "order": 7,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "samples",
+                    "type": "LATENT",
+                    "link": 12
+                },
+                {
+                    "name": "vae",
+                    "type": "VAE",
+                    "link": 471
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "IMAGE",
+                    "type": "IMAGE",
+                    "links": [
+                        44
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "VAE Decode"
+            }
+        },
+        {
+            "id": 230,
+            "type": "LoraLoader",
+            "pos": [
+                -278,
+                20
+            ],
+            "size": {
+                "0": 315,
+                "1": 126
+            },
+            "flags": {},
+            "order": 2,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "model",
+                    "type": "MODEL",
+                    "link": 464
+                },
+                {
+                    "name": "clip",
+                    "type": "CLIP",
+                    "link": 477
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "MODEL",
+                    "type": "MODEL",
+                    "links": [
+                        472
+                    ],
+                    "slot_index": 0
+                },
+                {
+                    "name": "CLIP",
+                    "type": "CLIP",
+                    "links": [
+                        478
+                    ],
+                    "slot_index": 1
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "Load LoRA"
+            },
+            "widgets_values": [
+                "japaneseDollLikeness_v10.safetensors",
+                1,
+                1
+            ]
+        },
+        {
+            "id": 231,
+            "type": "CLIPSetLastLayer",
+            "pos": [
+                136,
+                36
+            ],
+            "size": {
+                "0": 315,
+                "1": 58
+            },
+            "flags": {},
+            "order": 3,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "clip",
+                    "type": "CLIP",
+                    "link": 478
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "CLIP",
+                    "type": "CLIP",
+                    "links": [
+                        479,
+                        480
+                    ],
+                    "shape": 3,
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "CLIPSetLastLayer"
+            },
+            "widgets_values": [
+                -1
+            ]
+        },
+        {
+            "id": 4,
+            "type": "CheckpointLoaderSimple",
+            "pos": [
+                -681,
+                21
+            ],
+            "size": {
+                "0": 315,
+                "1": 98
+            },
+            "flags": {},
+            "order": 1,
+            "mode": 0,
+            "outputs": [
+                {
+                    "name": "MODEL",
+                    "type": "MODEL",
+                    "links": [
+                        464
+                    ],
+                    "slot_index": 0
+                },
+                {
+                    "name": "CLIP",
+                    "type": "CLIP",
+                    "links": [
+                        477
+                    ],
+                    "slot_index": 1
+                },
+                {
+                    "name": "VAE",
+                    "type": "VAE",
+                    "links": [
+                        471
+                    ],
+                    "slot_index": 2
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "Load Checkpoint (Simple)"
+            },
+            "widgets_values": [
+                "AOM3.safetensors"
+            ]
+        }
+    ],
+    "links": [
+        [
+            12,
+            3,
+            0,
+            8,
+            0,
+            "LATENT"
+        ],
+        [
+            44,
+            8,
+            0,
+            48,
+            0,
+            "IMAGE"
+        ],
+        [
+            464,
+            4,
+            0,
+            230,
+            0,
+            "MODEL"
+        ],
+        [
+            469,
+            6,
+            0,
+            3,
+            1,
+            "CONDITIONING"
+        ],
+        [
+            470,
+            7,
+            0,
+            3,
+            2,
+            "CONDITIONING"
+        ],
+        [
+            471,
+            4,
+            2,
+            8,
+            1,
+            "VAE"
+        ],
+        [
+            472,
+            230,
+            0,
+            3,
+            0,
+            "MODEL"
+        ],
+        [
+            473,
+            5,
+            0,
+            3,
+            3,
+            "LATENT"
+        ],
+        [
+            477,
+            4,
+            1,
+            230,
+            1,
+            "CLIP"
+        ],
+        [
+            478,
+            230,
+            1,
+            231,
+            0,
+            "CLIP"
+        ],
+        [
+            479,
+            231,
+            0,
+            6,
+            0,
+            "CLIP"
+        ],
+        [
+            480,
+            231,
+            0,
+            7,
+            0,
+            "CLIP"
+        ]
+    ],
+    "groups": [],
+    "config": {},
+    "extra": {
+        "workspace_info": {
+            "id": "7ba09e3e-b345-4a03-bbc5-1639b95aa9d1"
+        }
+    },
+    "version": 0.4
+}
