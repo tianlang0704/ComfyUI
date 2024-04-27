@@ -18,3 +18,4 @@ venv/
 /user/
 main-bak.py
 comfyui*.log
+.venv
